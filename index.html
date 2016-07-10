@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>tlist demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.js"></script>
+        <script src="jquery.tlist.js"></script>
+    </head>
+    <body>
+        <h1>tlist demo</h1>
+        <form>
+            Name: <input name="name" type="text"><br/>
+            Gender: <input name="gender" type="radio" value="M">Male <input name="gender" type="radio" value="F">Femail
+            <div class="tlist" data-tlist-name="languageList" id="languageList">
+                <script class="tlist-template" type="text/tlist-template">
+                    <div>
+                    Language: <input name="lang" type="text">
+                    Skilled: <input name="skilled" type="checkbox">
+                    <button class="tlist-remove"> - </button>
+                    </div>
+                </script>
+                <div class="tlist-main"></div>
+                <button class="tlist-add"> + </button>
+            </div>
+
+            <div class="tlist" data-tlist-name="workList" id="workList">
+                <script class="tlist-template" type="text/tlist-template">
+                    <div>
+                    Works: <input name="work" type="text">
+                    <button class="tlist-remove"> - </button>
+                    </div>
+                </script>
+                <div class="tlist-main"></div>
+                <button class="tlist-add"> + </button>
+            </div>
+
+            <input type="submit">
+        </form>
+
+        <script>
+
+(function ($) {
+    $('#languageList').tlist({
+        hello: 'cdf',
+        beforeAdd: function (inst) {
+            console.log('before add a lanuage');
+        },
+        afterAdd: function (inst) {
+            console.log('after add a language');
+        }
+    });
+    $('#workList').tlist({
+        hello: 'abc',
+        beforeAdd: function (inst) {
+            console.log('add a work');
+        }
+    });
+    
+
+    $('.tlist').tlist('changeName');
+    console.log('ok');
+})(jQuery);
+
+        </script>
+    </body>
+</html>
